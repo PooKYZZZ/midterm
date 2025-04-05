@@ -1,21 +1,21 @@
-- name: Install firewalld on CentOS
-  yum:
+---
+- name: Install firewalld package on CentOS
+  ansible.builtin.yum:
     name: firewalld
     state: present
+  when: ansible_os_family == 'RedHat'
 
-- name: Start and enable Firewalld
-  service:
+- name: Ensure firewalld service is enabled and started on CentOS
+  ansible.builtin.service:
     name: firewalld
-    state: started
     enabled: true
+    state: started
+  when: ansible_os_family == 'RedHat'
 
-- name: Allow SSH through Firewalld
-  firewalld:
-    port: 22/tcp
+- name: Allow SSH connections on CentOS
+  ansible.builtin.firewalld:
+    service: ssh
     permanent: true
     state: enabled
-
-- name: Reload Firewalld
-  service:
-    name: firewalld
-    state: reloaded
+    immediate: yes
+  when: ansible_os_family == 'RedHat'
