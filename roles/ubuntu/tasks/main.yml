@@ -1,10 +1,14 @@
-- name: Install UFW on Ubuntu
+- name: Install UFW package
   apt:
     name: ufw
     state: present
 
-- name: Enable UFW
+- name: Enable UFW firewall
   command: ufw enable
+  args:
+    warn: false
 
-- name: Allow SSH through UFW
+- name: Allow SSH connections
   command: ufw allow ssh
+  args:
+    warn: false
