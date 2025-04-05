@@ -1,0 +1,4 @@
+[servers]
+mn1 ansible_host=192.168.56.104 ansible_user=qfmgayao
+[server_centOS]
+mn3 ansible_host=192.168.44.129 ansible_user=qfmgayao 
