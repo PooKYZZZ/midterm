@@ -1,0 +1,9 @@
+---
+- name: Apply roles for Ubuntu and CentOS
+  hosts: all
+  become: yes
+  roles:
+    - role: ubuntu
+      when: ansible_facts['os_family'] == 'Debian'
+    - role: centos
+      when: ansible_facts['os_family'] == 'RedHat'
