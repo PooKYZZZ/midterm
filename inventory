@@ -1,4 +1,2 @@
 [ubuntu]
 mn1 ansible_host=192.168.56.104 ansible_user=qfmgayao
-[centos]
-mn2 ansible_host=192.168.44.129 ansible_user=qfmgayao 
