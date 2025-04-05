@@ -1,12 +1,19 @@
-- name: Install UFW package
-  apt:
+---
+- name: Install ufw package on Ubuntu
+  ansible.builtin.apt:
     name: ufw
     state: present
+  when: ansible_os_family == 'Debian'
 
-- name: Enable UFW firewall
-  command: ufw enable
-  args:
+- name: Ensure ufw service is enabled and started on Ubuntu
+  ansible.builtin.service:
+    name: ufw
+    enabled: true
+    state: started
+  when: ansible_os_family == 'Debian'
 
-- name: Allow SSH connections
-  command: ufw allow ssh
-  args:
+- name: Allow SSH connections on Ubuntu
+  ansible.builtin.ufw:
+    rule: allow
+    name: OpenSSH
+  when: ansible_os_family == 'Debian'
