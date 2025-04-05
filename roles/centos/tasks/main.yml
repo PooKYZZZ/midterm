@@ -1,0 +1,21 @@
+- name: Install firewalld on CentOS
+  yum:
+    name: firewalld
+    state: present
+
+- name: Start and enable Firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
+- name: Allow SSH through Firewalld
+  firewalld:
+    port: 22/tcp
+    permanent: true
+    state: enabled
+
+- name: Reload Firewalld
+  service:
+    name: firewalld
+    state: reloaded
