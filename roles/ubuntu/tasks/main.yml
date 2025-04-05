@@ -6,9 +6,7 @@
 - name: Enable UFW firewall
   command: ufw enable
   args:
-    warn: false
 
 - name: Allow SSH connections
   command: ufw allow ssh
   args:
-    warn: false
